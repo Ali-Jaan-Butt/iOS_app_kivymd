@@ -1,0 +1,53 @@
+<SignupScreen>:    
+    namee: namee
+    email: email
+    password: passw
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: dp(16)
+
+        MDLabel:
+            text: 'Sign Up'
+            theme_text_color: 'Primary'
+            halign: 'center'
+            font_style: 'H4'
+
+        MDTextField:
+            hint_text: 'Username'
+            id: namee
+            helper_text: 'Enter your username'
+            helper_text_mode: 'on_focus'
+            icon_right: 'account'
+            required: True
+
+        MDTextField:
+            hint_text: 'Email'
+            id: email
+            helper_text: 'Enter your email'
+            helper_text_mode: 'on_focus'
+            icon_right: 'email'
+            required: True
+
+        MDTextField:
+            hint_text: 'Password'
+            id: passw
+            helper_text: 'Enter your password'
+            helper_text_mode: 'on_focus'
+            icon_right: 'lock-outline'
+            password: True
+            required: True
+
+        MDRaisedButton:
+            text: 'Sign Up'
+            size_hint: None, None
+            size: dp(200), dp(48)
+            pos_hint: {'center_x': 0.5}
+            on_release: 
+                app.create_patch(namee.text, email.text, passw.text)
+                app.change_screen('login_screen')
+
+        MDLabel:
+            text: 'Already have an account? Login'
+            theme_text_color: 'Secondary'
+            halign: 'center'
+            on_touch_down: app.root.current = 'login' if self.collide_point(*args[1].pos) else None

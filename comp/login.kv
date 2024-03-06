@@ -1,0 +1,37 @@
+<LoginScreen>:
+    email: email
+    password: password
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: dp(10)
+        padding: dp(16)
+        pos_hint: {'center_y': 0.7}
+        MDLabel:
+            text: 'Login'
+            theme_text_color: 'Primary'
+            halign: 'center'
+            font_style: 'H4'
+
+        MDTextField:
+            hint_text: 'Email'
+            id: email
+            required: True
+            helper_text: 'Required'
+            helper_text_mode: 'on_error'
+            icon_right: 'email'
+
+        MDTextField:
+            hint_text: 'Password'
+            id: password
+            required: True
+            helper_text: 'Required'
+            helper_text_mode: 'on_error'
+            password: True
+            icon_right: 'lock-outline'
+
+        MDRaisedButton:
+            text: 'Login'
+            halign: 'center'
+            pos_hint:{"x":0.4,"y":0.4}
+            on_release:
+                app.get_sign(email.text, password.text)

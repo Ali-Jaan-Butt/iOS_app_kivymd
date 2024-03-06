@@ -1,0 +1,19 @@
+<StartScreen>:
+    MDBoxLayout:
+        pos_hint: {'center_y': 0.7}
+        orientation: 'vertical'
+
+        Image:
+            source: 'img/start1.jpeg'  # Replace with the path to your image
+
+        MDRoundFlatButton:
+            text: 'Login'
+            #pos_hint: {'center_x': 0.5}
+            pos_hint: {'center_x': 0.5, 'top': 0.7}
+            on_release: app.change_screen('login_screen')
+
+        MDRoundFlatButton:
+            text: 'Sign Up'
+            #pos_hint: {'center_x': 0.5}
+            on_release: app.change_screen('signup_screen')
+            pos_hint: {'center_x': 0.5, 'top': 0.6}
