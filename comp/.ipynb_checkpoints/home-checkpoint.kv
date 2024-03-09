@@ -12,19 +12,23 @@
                 orientation: 'vertical'
                 spacing: dp(10)
                 padding: dp(16)
-
-                MDLabel:
-                    text: 'Welcome'
-                    theme_text_color: 'Primary'
-                    halign: 'center'
-                    font_style: 'H4'
+            #MDLabel:
+            #    text: 'Welcome'
+            #    theme_text_color: 'Primary'
+            #    halign: 'center'
+            #    font_style: 'H4'
             MDBoxLayout:
                 Image:
                     source: 'img/home.jpeg'  # Replace with the path to your image
                     # size_hint_y: None
                     # height: dp(100)  # Adjust the height of the image as needed
                     allow_stretch: True
-                    # pos_hint: {'y': 0.7}
+                    pos_hint: {'y': 0.1}
+            #MDBoxLayout:
+            #    MDFloatingActionButton:
+            #        icon: 'img/back.png'
+            #        pos_hint: {'center_y': 0.75}
+            #        on_release: app.change_screen('login_screen')
 
             ScrollView:
                 MDBoxLayout:
@@ -33,23 +37,40 @@
                     padding: dp(16)
 
                     OneLineListItem:
-                        text: 'Button 1'
-                        on_release: app.on_button_click('Button 1')
+                        text: 'Cardiology'
+                        on_release: app.change_screen('doctors_list')
 
                     OneLineListItem:
-                        text: 'Button 2'
-                        on_release: app.on_button_click('Button 2')
+                        text: 'Dentist'
+                        on_release: app.change_screen('doctors_list')
 
                     OneLineListItem:
-                        text: 'Button 3'
-                        on_release: app.on_button_click('Button 3')
+                        text: 'Surgeon'
+                        on_release: app.change_screen('doctors_list')
+                        
+                    OneLineListItem:
+                        text: 'Gynecologist'
+                        on_release: app.change_screen('doctors_list')
 
                     # Add more round buttons as needed
 
-        #MDToolbar:
-        #    md_bg_color: app.theme_cls.primary_color
-        #   left_action_items: [['home', lambda x: app.go_to_home_screen()]]
+        #MDBottomNavigation:
+        #MDBottomNavigationItem:
+        #    name: 'screen 1'
+        #    text: 'Tab 1'
+        #    icon: 'android'
+        #    BoxLayout:
+        #        orientation: 'vertical'
+        #        MDRaisedButton:
+        #            text: 'Content for Tab 1'
+        #            on_release: app.tab_click(1)
 
-        #    NavigationDrawerIconButton:
-        #        icon: 'settings'
-        #        on_release: app.root.toggle_nav_drawer()
+        #MDBottomNavigationItem:
+        #    name: 'screen 2'
+        #    text: 'Tab 2'
+        #    icon: 'apple'
+        #    BoxLayout:
+        #        orientation: 'vertical'
+        #        MDRaisedButton:
+        #            text: 'Content for Tab 2'
+        #            on_release: app.tab_click(2)

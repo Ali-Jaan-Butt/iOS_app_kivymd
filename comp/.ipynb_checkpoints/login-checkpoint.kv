@@ -6,6 +6,10 @@
         spacing: dp(10)
         padding: dp(16)
         pos_hint: {'center_y': 0.7}
+        MDFloatingActionButton:
+            icon: 'img/back.png'
+            pos_hint: {'center_y': 0.8}
+            on_release: app.change_screen('login_screen')
         MDLabel:
             text: 'Login'
             theme_text_color: 'Primary'

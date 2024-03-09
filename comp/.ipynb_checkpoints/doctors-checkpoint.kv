@@ -1,0 +1,35 @@
+<DoctorsList>:
+    BoxLayout:
+        orientation: 'vertical'
+        pos_hint: {'center_y': 0.7}
+        MDScreen:
+            MDBoxLayout:
+                orientation: 'vertical'
+                spacing: dp(10)
+                padding: dp(16)
+            MDLabel:
+                text: 'Doctors'
+                theme_text_color: 'Primary'
+                halign: 'center'
+                font_style: 'H4'
+            ScrollView:
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    spacing: dp(10)
+                    padding: dp(16)
+
+                    OneLineListItem:
+                        text: 'Doctor 1\nHeart Specialist'
+                        on_release: app.on_button_click('Button 1')
+
+                    OneLineListItem:
+                        text: 'Doctor 2'
+                        on_release: app.on_button_click('Button 2')
+
+                    OneLineListItem:
+                        text: 'Doctor 3'
+                        on_release: app.on_button_click('Button 3')
+                        
+                    OneLineListItem:
+                        text: 'Doctor 4'
+                        on_release: app.on_button_click('Button 3')

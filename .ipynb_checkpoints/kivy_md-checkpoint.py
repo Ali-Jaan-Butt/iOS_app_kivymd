@@ -24,6 +24,9 @@ class LoginScreen(Screen):
 class HomeScreen(Screen):
     pass
 
+class DoctorsList(Screen):
+    pass
+
 class MyApp(MDApp):
     cred = credentials.Certificate("doctors-72cd1-firebase-adminsdk-pf7qv-7ca42b4bcf.json")
     firebase_admin.initialize_app(cred, {'databaseURL':'https://doctors-72cd1-default-rtdb.firebaseio.com'})
