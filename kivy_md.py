@@ -27,6 +27,15 @@ class HomeScreen(Screen):
 class DoctorsList(Screen):
     pass
 
+class SecondList(Screen):
+    pass
+
+class ThirdList(Screen):
+    pass
+
+class FourthList(Screen):
+    pass
+
 class MyApp(MDApp):
     cred = credentials.Certificate("doctors-72cd1-firebase-adminsdk-pf7qv-7ca42b4bcf.json")
     firebase_admin.initialize_app(cred, {'databaseURL':'https://doctors-72cd1-default-rtdb.firebaseio.com'})
@@ -36,7 +45,12 @@ class MyApp(MDApp):
 
     def create_patch(self, namee, email, passw):
         data = {'name':namee, 'email':email, 'password':passw}
-        new_data_ref = self.ref.push(data)
+        if data['name']=='' or data['email']=='' or data['password']=='':
+            return
+        else:
+            new_data_ref = self.ref.push(data)
+            app = MDApp.get_running_app()
+            app.change_screen('login_screen')
         
     def get_sign(self, email, password):
         data = self.ref.get()
@@ -60,6 +74,12 @@ class MyApp(MDApp):
     def change_screen(self, screen):
         screen_manager = self.root.ids['screen_manager']
         screen_manager.current = screen
+    
+    def on_checkbox_active(self, gender):
+        if gender == 'male' and self.root.ids.female_checkbox.active:
+            self.root.ids.female_checkbox.active = False
+        elif gender == 'female' and self.root.ids.male_checkbox.active:
+            self.root.ids.male_checkbox.active = False
 
 
 if __name__ == '__main__':
