@@ -2,8 +2,7 @@
     namee: namee
     email: email
     password: passw
-    #age: age
-    #gender: gender
+    age: age
     group: 'group'
     MDBoxLayout:
         orientation: 'vertical'
@@ -40,30 +39,19 @@
             password: True
             required: True
             
-        BoxLayout:
-            orientation: 'vertical'
-            spacing: '10dp'
-            padding: '10dp'
 
-            MDLabel:
-                text: "Select Gender"
-                halign: 'center'
-                theme_text_color: "Secondary"    
-
-            FloatLayout:
-                orientation: 'horizontal'
-                spacing: '10dp'
-
-                MDCheckbox:
-                    active: True
-                    pos_hint: {'center_x': .4, 'center_y': .5}
-                MDLabel:
-                    text: 'Male'
-
-                MDCheckbox:
-                    pos_hint: {'center_x': .6, 'center_y': .5}
-                MDLabel:
-                    text: 'Female'
+        MDTextField:
+            id: gender_field
+            hint_text: 'Select Gender'
+            pos_hint: {'center_x': 0.5}
+            on_focus: app.show_gender_menu(self, self.focus)
+                    
+        MDTextField:
+            hint_text: 'Age'
+            id: age
+            helper_text: 'Enter your age'
+            helper_text_mode: 'on_focus'
+            required: True
 
         MDRaisedButton:
             text: 'Sign Up'
@@ -71,7 +59,7 @@
             size: dp(200), dp(48)
             pos_hint: {'center_x': 0.5}
             on_release: 
-                app.create_patch(namee.text, email.text, passw.text)
+                app.create_patch(namee.text, email.text, passw.text, age.text, gender_field.text)
 
         MDLabel:
             text: 'Already have an account? Login'

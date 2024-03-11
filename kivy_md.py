@@ -6,6 +6,7 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
+from kivymd.uix.menu import MDDropdownMenu
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -36,16 +37,22 @@ class ThirdList(Screen):
 class FourthList(Screen):
     pass
 
+class BookScreen(Screen):
+    pass
+
 class MyApp(MDApp):
     cred = credentials.Certificate("doctors-72cd1-firebase-adminsdk-pf7qv-7ca42b4bcf.json")
     firebase_admin.initialize_app(cred, {'databaseURL':'https://doctors-72cd1-default-rtdb.firebaseio.com'})
     ref = db.reference('/')
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.menu = None
     def build(self):
         return Builder.load_file('main.kv')
 
-    def create_patch(self, namee, email, passw):
-        data = {'name':namee, 'email':email, 'password':passw}
-        if data['name']=='' or data['email']=='' or data['password']=='':
+    def create_patch(self, namee, email, passw, age, gender_field):
+        data = {'name':namee, 'email':email, 'password':passw, 'age':age, 'gender':gender_field}
+        if data['name']=='' or data['email']=='' or data['password']=='' or data['age']=='' or data['gender']=='':
             return
         else:
             new_data_ref = self.ref.push(data)
@@ -75,11 +82,24 @@ class MyApp(MDApp):
         screen_manager = self.root.ids['screen_manager']
         screen_manager.current = screen
     
-    def on_checkbox_active(self, gender):
-        if gender == 'male' and self.root.ids.female_checkbox.active:
-            self.root.ids.female_checkbox.active = False
-        elif gender == 'female' and self.root.ids.male_checkbox.active:
-            self.root.ids.male_checkbox.active = False
+    def show_gender_menu(self, instance, value):
+        if value:
+            menu_items = [
+                {"text": "Male", "viewclass": "OneLineListItem", "on_release": lambda x="Male": self.set_gender(x)},
+                {"text": "Female", "viewclass": "OneLineListItem", "on_release": lambda x="Female": self.set_gender(x)}
+            ]
+            self.menu = MDDropdownMenu(
+                caller=instance,
+                items=menu_items,
+                width_mult=4,
+            )
+            self.menu.open()
+
+    def set_gender(self, text_item):
+        self.menu.dismiss()
+        gender_field = self.root.ids.signup_screen.ids.gender_field
+        gender_field.text = text_item
+        print(gender_field.text)
 
 
 if __name__ == '__main__':
