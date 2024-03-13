@@ -7,6 +7,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivymd.uix.menu import MDDropdownMenu
+from kivymd.uix.button import MDFlatButton
+from kivymd.uix.dialog import MDDialog
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -66,17 +68,37 @@ class MyApp(MDApp):
         popup = Popup(title='Login Error', content=self.error_label, size_hint=(None, None), size=(400, 200))
         x = 1
         for i in data:
-            if data[i]['email']==email and data[i]['password']==password:
-                app = MDApp.get_running_app()
-                app.change_screen('home_screen')
-                x+=1
-                break
-            else:
-                popup = popup
+            try:
+                if data[i]['email']==email and data[i]['password']==password:
+                    app = MDApp.get_running_app()
+                    app.change_screen('home_screen')
+                    x+=1
+                    break
+                else:
+                    popup = popup
+            except:
+                pass
         if x==1:
             popup.open()
         else:
             pass
+
+    def app_book(self, doc_name, doc_time):
+        gmail = self.root.ids.login_screen.ids.email.text
+        my_data = self.ref.get()
+        for i in my_data:
+            try:
+                if my_data[i]['email']==gmail:
+                    rec_name = my_data[i]['name']
+                    rec_age = my_data[i]['age']
+                    rec_gender = my_data[i]['gender']
+                    break
+            except:
+                pass
+        app_data = {'p_name':rec_name, 'p_age':rec_age, 'p_gender':rec_gender, 'doc_name':doc_name, 'doc_time':doc_time}
+        new_data = self.ref.push(app_data)
+        print('Data uploaded')
+        pass
     
     def change_screen(self, screen):
         screen_manager = self.root.ids['screen_manager']
@@ -101,6 +123,19 @@ class MyApp(MDApp):
         gender_field.text = text_item
         print(gender_field.text)
 
+    def show_popup(self, *args):
+        content = MDFlatButton(text="Close", on_release=self.close_dialog)
+
+        self.dialog = MDDialog(
+            title="Appointment",
+            text="Appointment is booked",
+            buttons=[content]
+        )
+
+        self.dialog.open()
+        
+    def close_dialog(self, *args):
+        self.dialog.dismiss()
 
 if __name__ == '__main__':
     MyApp().run()

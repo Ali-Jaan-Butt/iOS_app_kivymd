@@ -21,23 +21,38 @@
 
                     OneLineListItem:
                         text: 'William Osler         2pm-6pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release: 
+                            app.app_book('William Osler', '2pm-6pm')
+                            app.show_popup()
 
                     OneLineListItem:
                         text: 'Gerbrand Bakker   10am-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:
+                            app.app_book('Gerbrand Bakker', '10am-4pm')
+                            app.show_popup()
 
                     OneLineListItem:
                         text: 'Charles Best          12am-5pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:
+                            app.app_book('Charles Best', '12am-5pm')
+                            app.show_popup()
                         
                     OneLineListItem:
                         text: 'Elizabeth                1pm-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:
+                            app.app_book('Elizabeth', '1pm-4pm')
+                            app.show_popup()
                         
                     OneLineListItem:
                         text: 'James Carson      2pm-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release: 
+                            app.app_book('James Carson', '2pm-4pm')
+                            app.show_popup()
+            MDBoxLayout:
+                MDFloatingActionButton:
+                    icon: 'img/back.png'
+                    pos_hint: {'center_y': 0.75}
+                    on_release: app.change_screen('home_screen')
                         
 <SecondList>:
     BoxLayout:
@@ -62,23 +77,38 @@
 
                     OneLineListItem:
                         text: 'Samantha     2pm-6pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release: 
+                            app.app_book('Samantha', '2pm-6pm')
+                            app.show_popup()
 
                     OneLineListItem:
                         text: 'Jonathan     10am-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release: 
+                            app.app_book('Jonathan', '10am-4pm')
+                            app.show_popup()
 
                     OneLineListItem:
                         text: 'Jennifer      12am-5pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release: 
+                            app.app_book('Jennifer', '12am-5pm')
+                            app.show_popup()
                         
                     OneLineListItem:
                         text: 'Harrison      1pm-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release: 
+                            app.app_book('Harrison', '1pm-4pm')
+                            app.show_popup()
                         
                     OneLineListItem:
                         text: 'Kimberly     2pm-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release: 
+                            app.app_book('Kimberly', '2pm-4pm')
+                            app.show_popup()
+            MDBoxLayout:
+                MDFloatingActionButton:
+                    icon: 'img/back.png'
+                    pos_hint: {'center_y': 0.75}
+                    on_release: app.change_screen('home_screen')
                         
 <ThirdList>:
     BoxLayout:
@@ -103,23 +133,38 @@
 
                     OneLineListItem:
                         text: 'Benjamin      2pm-6pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:  
+                            app.app_book('Benjamin', '2pm-6pm')
+                            app.show_popup()
 
                     OneLineListItem:
                         text: 'Victoria      10am-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:  
+                            app.app_book('Victoria', '10am-4pm')
+                            app.show_popup()
 
                     OneLineListItem:
                         text: 'Nicholas      12am-5pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:  
+                            app.app_book('Nicholas', '12am-5pm')
+                            app.show_popup()
                         
                     OneLineListItem:
                         text: 'Gabriela       1pm-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:  
+                            app.app_book('Gabriela', '1pm-4pm')
+                            app.show_popup()
                         
                     OneLineListItem:
                         text: 'Jonathan     2pm-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:  
+                            app.app_book('Jonathan', '2pm-4pm')
+                            app.show_popup()
+            MDBoxLayout:
+                MDFloatingActionButton:
+                    icon: 'img/back.png'
+                    pos_hint: {'center_y': 0.75}
+                    on_release: app.change_screen('home_screen')
                         
 <FourthList>:
     BoxLayout:
@@ -144,20 +189,35 @@
 
                     OneLineListItem:
                         text: 'Benjamin      2pm-6pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:  
+                            app.app_book('Benjamin', '2pm-6pm')
+                            app.show_popup()
 
                     OneLineListItem:
                         text: 'Victoria        10am-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:  
+                            app.app_book('Victoria', '10am-4pm')
+                            app.show_popup()
 
                     OneLineListItem:
                         text: 'Nicholas      12am-5pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:  
+                            app.app_book('Nicholas', '12am-5pm')
+                            app.show_popup()
                         
                     OneLineListItem:
                         text: 'Gabriela       1pm-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:  
+                            app.app_book('Gabriela', '1pm-4pm')
+                            app.show_popup()
                         
                     OneLineListItem:
                         text: 'Jonathan     2pm-4pm'
-                        on_release: app.change_screen('book_screen')
+                        on_release:  
+                            app.app_book('Jonathan', '2pm-4pm')
+                            app.show_popup()
+            MDBoxLayout:
+                MDFloatingActionButton:
+                    icon: 'img/back.png'
+                    pos_hint: {'center_y': 0.75}
+                    on_release: app.change_screen('home_screen')
