@@ -11,9 +11,7 @@
             
             MDBoxLayout:
                 Image:
-                    source: 'img/home.jpeg'  # Replace with the path to your image
-                    # size_hint_y: None
-                    # height: dp(100)  # Adjust the height of the image as needed
+                    source: 'img/home.jpeg' 
                     allow_stretch: True
                     pos_hint: {'y': 0.1}
             
@@ -38,3 +36,12 @@
                     OneLineListItem:
                         text: 'Gynecologist'
                         on_release: app.change_screen('fourth_list')
+                        
+    BoxLayout:
+        MDFillRoundFlatButton:
+            text: 'Log out'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+            halign: 'center'
+            on_release:
+                app.change_screen('login_screen')
+                app.clear_text()

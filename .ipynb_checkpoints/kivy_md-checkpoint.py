@@ -39,9 +39,6 @@ class ThirdList(Screen):
 class FourthList(Screen):
     pass
 
-class BookScreen(Screen):
-    pass
-
 class MyApp(MDApp):
     cred = credentials.Certificate("doctors-72cd1-firebase-adminsdk-pf7qv-7ca42b4bcf.json")
     firebase_admin.initialize_app(cred, {'databaseURL':'https://doctors-72cd1-default-rtdb.firebaseio.com'})
@@ -97,7 +94,6 @@ class MyApp(MDApp):
                 pass
         app_data = {'p_name':rec_name, 'p_age':rec_age, 'p_gender':rec_gender, 'doc_name':doc_name, 'doc_time':doc_time}
         new_data = self.ref.push(app_data)
-        print('Data uploaded')
         pass
     
     def change_screen(self, screen):
@@ -121,7 +117,6 @@ class MyApp(MDApp):
         self.menu.dismiss()
         gender_field = self.root.ids.signup_screen.ids.gender_field
         gender_field.text = text_item
-        print(gender_field.text)
 
     def show_popup(self, *args):
         content = MDFlatButton(text="Close", on_release=self.close_dialog)
@@ -136,6 +131,12 @@ class MyApp(MDApp):
         
     def close_dialog(self, *args):
         self.dialog.dismiss()
+        
+    def clear_text(self):
+        self.root.ids.login_screen.ids.email.focus = True
+        self.root.ids.login_screen.ids.email.text = ""
+        self.root.ids.login_screen.ids.password.focus = False
+        self.root.ids.login_screen.ids.password.text = ""
 
 if __name__ == '__main__':
     MyApp().run()
